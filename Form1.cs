@@ -7,6 +7,7 @@ namespace PressureConverter
             InitializeComponent();
         }
 
+        // Method for the Laske button
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
             string pressureKpa = textBoxkPa.Text;
@@ -17,13 +18,21 @@ namespace PressureConverter
             textBoxPsi.Text = Convert.ToString(psi);
         }
 
+        // A method to enable Laske button
         private void textBoxkPa_Leave(object sender, EventArgs e)
         {
             // Check if textBoxkPa contains numeric value
+
+            // Define a variable for parsed value
             double kpa;
+
+            // store success or failure to a varible and set parsed value
             bool numericValue = double.TryParse(textBoxkPa.Text, out kpa);
+
+            // Sanity check if value is reasonable
             if (kpa <= 10)
             {
+                // Generate an error message
                 string message = "Virheellinen painetieto, paine pitää olla yli 10 kPa, anna pelkkiä numeroita. Käytä tarvittaessa desimaalipilkkua (,)";
                 string header = "Väärä paine";
                 DialogResult kpaErrorMsg;
@@ -42,6 +51,7 @@ namespace PressureConverter
 
         }
 
+        // A methdo to clear the UI and set focus back to kPa field
         private void buttonClear_Click(object sender, EventArgs e)
         {
             textBoxkPa.Text = string.Empty;
